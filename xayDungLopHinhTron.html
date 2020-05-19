@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let Circle = function (radius) {
+
+            this.radius = radius;
+
+            this.getRadius = function () {
+                return radius;
+            }
+            this.getArea = function () {
+                return Math.PI * radius * radius;
+            }
+
+        };
+        let circle = new Circle(2);
+        let radius = circle.getRadius(); // 2
+
+        let area = circle.getArea(); // 12.566370614359172 
+        document.write("radius: " + radius + "; area: " + area);
+        let vongTron2 = new Circle(5)
+        let banKinh2 = vongTron2.getRadius();
+        let dienTich2 = vongTron2.getArea();
+        document.write("<br>radius: " + banKinh2 + "; area: " + dienTich2);
+
+
+
+
+    </script>
+</body>
+
+</html>
