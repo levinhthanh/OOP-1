@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let MyDate = function (ngay, thang, nam) {
+
+            this.day = ngay;
+
+            this.month = thang;
+
+            this.year = nam;
+            
+            this.getDay = function () {
+                return this.day;
+            }
+            this.getMonth = function () {
+                return this.month;
+            }
+            this.getYear = function () {
+                return this.year;
+            }
+            this.setDay = function (ngay) {
+                this.day = ngay;
+                return this.day;
+            }
+            this.setMonth = function (thang) {
+                this.month = thang;
+                return this.month;
+            }
+            this.setYear = function (nam) {
+                this.year = nam;
+                return this.year;
+            }
+            this.setDate = function (ngay,thang,nam){
+                this.day = ngay;
+                this.month = thang;
+                this.year = nam;
+                
+            }
+            this.toString = function(){
+                this.string = this.day.toString()+this.month.toString()+this.year.toString();
+                return this.string;
+            }
+        };
+        let date1 = new MyDate(2, 2, 2007);
+        let day1 = date1.getDay(); // 2
+        let month1 = date1.getMonth(); // 2
+        let year1 = date1.getYear(); // 2007
+        alert(day1 + "/" + month1 + "/" + year1);
+
+        day1 = date1.setDay(10);
+        month1 = date1.setMonth(10);
+        year1 = date1.setYear(2019);
+        alert(day1 + "/" + month1 + "/" + year1);
+
+        date1.setDate(19,10,2020)
+        alert(date1.day + "/" + date1.month + "/" + date1.year);
+        let chuoi= date1.toString();
+        document.write(chuoi);
+    </script>
+</body>
+
+</html>
