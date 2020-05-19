@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lớp HCN</title>
+    <style>
+        #result{
+            width: 1000px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="result"></div>
+    <canvas id="myCanvas" width="1000px" height="500px" style="border:1px solid #d3d3d3;"></canvas>
+    <script>
+        let Rectangle = function (chDai, chRong) {
+            this.length = chDai;
+            this.width = chRong;
+            this.getRadius = function () {
+                return chRong * chDai;
+            }
+            this.getArea = function () {
+                return 2 * (chDai + chRong);
+            }
+            this.drawRec = function () {
+                // Lấy đối tượng Canvas
+                var canvas = document.getElementById('myCanvas');
+                var context = canvas.getContext('2d');
+                // Tiến hành vẽ
+                context.beginPath();        // Khai báo vẽ đường thẳng mới
+                context.moveTo(50, 150);     // Điểm bắt đầu
+                context.lineTo(50+chDai, 150);    
+                context.lineTo(50+chDai, 150+chRong);    
+                context.lineTo(50, 150+chRong); 
+                context.lineTo(50, 150);   // Điểm kết thúc
+                context.lineWidth = 2;     // rộng 15px
+                context.strokeStyle = 'green';// Màu xanh
+                context.lineCap = 'butt';
+                context.stroke();           // Tiến hành vẽ
+            }
+        }
+        let rec1= new Rectangle(200,100);
+        let dt = rec1.getRadius();
+        let cv = rec1.getArea();
+        document.getElementById('result').innerHTML='<br> Diện tích = '+dt+'<br><br> Chu vi = '+cv;
+       rec1.drawRec();
+        
+    </script>
+</body>
+
+</html>
