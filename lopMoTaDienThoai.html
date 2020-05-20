@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mô tả điện thoại</title>
+</head>
+
+<body>
+    <script>
+        let Telephone = function (pin, trangThai, sdt) {
+            this.battery = pin;
+            this.messTyping;
+            this.messSent;
+            this.messTmp;
+            this.messReceived;
+            this.status = trangThai;
+            this.teleNum = sdt;
+
+            this.status = function () {
+                this.battery--;
+                if (this.status === 'on') return true;
+                else return false
+            };
+            this.onOff = function () {
+                this.battery--;
+                if (this.status === 'on') this.status = 'off';
+                else this.status = 'on';
+            }
+            this.chargeBat = function () {
+                this.battery = 100;
+            }
+            this.typingMess = function () {
+                this.battery--;
+                this.messTyping = prompt('Nhập tin nhắn:');
+
+            }
+            this.sendMess = function (sdtNhan) {
+                this.battery--;
+                this.messSent = this.messTyping;
+                if (sdtNhan === iphone.teleNum) {
+                    iphone.messTmp = this.messSent ;
+                }
+            }
+            this.receiveMess = function (sdtGui) {
+                this.battery--;
+                if (sdtGui === nokia.teleNum) {
+                    this.messReceived = this.messTmp;
+                }
+
+            }
+            this.watchSent = function () {
+                this.battery--;
+                document.write('Nội dung tin nhắn đã gửi: ' + this.messSent);
+            }
+            this.watchReceived = function () {
+                this.battery--;
+                document.write('Nội dung tin nhắn nhận được: ' + this.messReceived);
+            }
+
+
+        }
+
+        let nokia = new Telephone(100, 'on', "0999999999");
+        let iphone = new Telephone(100, 'on', "0914800124");
+
+
+        nokia.typingMess();
+
+        nokia.sendMess("0914800124");
+
+        iphone.receiveMess("0999999999");
+
+        iphone.watchReceived();
+
+    </script>
+</body>
+
+</html>
