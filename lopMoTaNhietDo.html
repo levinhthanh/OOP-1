@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let Temperature = function (tem) {
+            
+            this.tem = tem > -273 ? tem: -273;
+            this.convertToF= function(){
+                 return 1.8*this.tem+32;
+            }
+            this.convertToK= function(){
+                 return this.tem+273;
+            }      
+        }
+        let homNay= new Temperature(25);
+        let homNayC= homNay.tem;
+        let homNayF= homNay.convertToF();
+        let homNayK= homNay.convertToK();
+        document.write('Hôm nay: '+ homNayC + ' độ C <br>' );
+        document.write('Bằng: '+ homNayF + ' độ F <br>' );
+        document.write('Bằng: '+ homNayK + ' độ K <br>' );
+    </script>
+</body>
+</html>
