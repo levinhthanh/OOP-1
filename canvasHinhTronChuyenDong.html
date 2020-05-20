@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hình tròn chuyển động</title>
+</head>
+<body>
+    <canvas id="veHinhTron" width="500px" height="500px" style="border:1px solid #d3d3d3;"></canvas>
+    <script>
+        var context = document.getElementById("veHinhTron").getContext("2d");
+        let x=20,y=20;
+        function drawBall(){
+            context.beginPath();
+            context.arc(x,y,20,0,Math.PI*2);
+            context.fillStyle='red';
+            context.fill();
+            context.closePath();
+        }
+        setInterval(function(){
+            context.clearRect(0,0,500,500);
+            drawBall();
+            x+=2;
+            y+=2;
+        },200);
+
+    </script>
+</body>
+</html>
