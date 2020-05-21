@@ -9,7 +9,8 @@
 
 <body>
     <script>
-        let Telephone = function (pin, trangThai, sdt) {
+        let Telephone = function (name, pin, trangThai, sdt) {
+            this.name = name;
             this.battery = pin;
             this.messTyping;
             this.messSent;
@@ -18,10 +19,10 @@
             this.status = trangThai;
             this.teleNum = sdt;
 
-            this.status = function () {
+            this.checkStatus = function () {
                 this.battery--;
-                if (this.status === 'on') return true;
-                else return false
+                if (this.status === 'on') document.write(this.name+' đang hoạt động! <br>');
+                else document.write(this.name+' đang tắt! <br>');
             };
             this.onOff = function () {
                 this.battery--;
@@ -32,47 +33,58 @@
                 this.battery = 100;
             }
             this.typingMess = function () {
+                if(this.status==='on'){
                 this.battery--;
                 this.messTyping = prompt('Nhập tin nhắn:');
-
+            }
             }
             this.sendMess = function (sdtNhan) {
+                if(this.status==='on'){
                 this.battery--;
                 this.messSent = this.messTyping;
                 if (sdtNhan === iphone.teleNum) {
                     iphone.messTmp = this.messSent ;
                 }
+                }
             }
             this.receiveMess = function (sdtGui) {
+                if(this.status==='on'){
                 this.battery--;
                 if (sdtGui === nokia.teleNum) {
                     this.messReceived = this.messTmp;
                 }
-
+                }
             }
             this.watchSent = function () {
+                if(this.status==='on'){
                 this.battery--;
-                document.write('Nội dung tin nhắn đã gửi: ' + this.messSent);
+                document.write(' Nội dung tin nhắn '+this.name+' đã gửi: ' + this.messSent +'<br> ');
+                }
             }
             this.watchReceived = function () {
+                if(this.status==='on'){
                 this.battery--;
-                document.write('Nội dung tin nhắn nhận được: ' + this.messReceived);
+                document.write(' Nội dung tin nhắn '+this.name+' nhận được: ' + this.messReceived+'<br>');
             }
-
+            }
 
         }
 
-        let nokia = new Telephone(100, 'on', "0999999999");
-        let iphone = new Telephone(100, 'on', "0914800124");
+        let nokia = new Telephone('Nokia',100, 'on', "0999999999");
+        let iphone = new Telephone('Iphone',100, 'on', "0914800124");
 
 
         nokia.typingMess();
-
         nokia.sendMess("0914800124");
-
         iphone.receiveMess("0999999999");
 
         iphone.watchReceived();
+        nokia.watchSent();
+
+        iphone.checkStatus();
+        nokia.onOff();
+        nokia.checkStatus();
+
 
     </script>
 </body>
