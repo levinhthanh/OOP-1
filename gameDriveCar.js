@@ -22,16 +22,29 @@ setInterval(function () {
 }, 50);
 
 function endGame(){
-    if(tank1.x==200 & tank1.y==290 || tank1.x==1000 & tank1.y==290 || tank1.x>1240 || tank1.y>500 || tank1.x<0 || tank1.y<0){
+    if(Math.abs(tank1.x-bomb1.x)<50 & Math.abs(tank1.y-bomb1.y)<50 || Math.abs(tank1.x-bomb2.x)<50 & Math.abs(tank1.y-bomb2.y)<50){
         return false;
     }
     return true;
 }
 
 function calMark(){
-      if(tank1.x==600 & tank1.y==90 || tank1.x==500 & tank1.y==500){
+      if(Math.abs(tank1.x-money1.x)<50 & Math.abs(tank1.y-money1.y)<50){
           mark += 1;
+          money1.x += 200;
+          if (money1.x > 1340) money1.x = money1.x -= 500;
+          if (money1.x < 0) money1.x += 200;
+          if (money1.y > 600) money1.y = money1.y -= 500;
+          if (money1.y < 0) money1.y += 200;
       }
+      if(Math.abs(tank1.x-money2.x)<50 & Math.abs(tank1.y-money2.y)<50){
+        mark += 1;
+        money2.x += 200;
+        if (money2.x > 1340) money2.x = money2.x -= 500;
+        if (money2.x < 0) money2.x += 200;
+        if (money2.y > 600) money2.y = money2.y -= 500;
+        if (money2.y < 0) money2.y += 200;
+    }
 }
 
 function Tank(x, y, width, height, direction, speed) {
